@@ -246,14 +246,16 @@ class Calculator(tk.Tk):
         keymap = {
             "0":"0","1":"1","2":"2","3":"3","4":"4",
             "5":"5","6":"6","7":"7","8":"8","9":"9",
-            ".":".", "+":"+", "-":"-", "*":"×", "/":"÷",
-            "percent":"%", "Return":"=", "KP_Enter":"=",
-            "BackSpace":"⌫", "Escape":"C", "exclam":"√",
+            "period":".", "Return":"=", "KP_Enter":"=",
+            "percent":"%", "BackSpace":"⌫", "Escape":"C", "exclam":"√",
         }
         for key, action in keymap.items():
             self.bind(f"<{key}>", lambda e, a=action: self._handle(a))
         self.bind("<KeyPress-asterisk>", lambda e: self._handle("×"))
         self.bind("<KeyPress-slash>",    lambda e: self._handle("÷"))
+        self.bind("<KeyPress-plus>",     lambda e: self._handle("+"))
+        self.bind("<KeyPress-minus>",    lambda e: self._handle("-"))
+        self.bind("<KeyPress-period>",   lambda e: self._handle("."))
 
     # ─── LOGIC ───────────────────────────────────────
     def _handle(self, key):
